@@ -7,7 +7,7 @@ class Databank:
         self.con = pymysql.connect(user='root', passwd='')
         self.cursor = self.con.cursor()
 
-    def create_db(self):
+    def database(self):
         try:
             self.cursor.execute('CREATE DATABASE library')
         except Exception as error:
@@ -34,20 +34,14 @@ class Databank:
         else:
             print('Connection successfully!')
 
-    def book_register(self, title: str, author: str, price: float):
-        try:
-            self.cursor.execute('INSERT INTO books (title, author, price) VALUES (%s, %s, %s)', (title, author, price))
-        except Exception as error:
-            print(error)
-        else:
-            self.con.commit()
-            self.con.close()
-            print('Registered!')
+    def create_db(self):
+        self.database()
+        self.create_table()
 
 
 if __name__ == '__main__':
     db = Databank()
     # db.create_db()
     # db.create_table()
-    db.verify_connection()
-    db.book_register('Alice in Wonderland', 'Lewis Carroll', 32.90)
+    # db.verify_connection()
+    db.create_db()
