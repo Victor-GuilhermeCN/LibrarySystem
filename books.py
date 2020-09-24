@@ -8,11 +8,19 @@ class Books:
         self.db = Databank()
         self.db.cursor.execute('USE library')
 
-    def register_book(self, title: str, author: str, price: float, bar_code: str, stock=0):
+    def register_book(self, title: str, author: str, price: float, barcode: str, stock=0):
+        """This method register the book in the books table, but before checks if the books is already registered.
+        I decided to use the barcode in data string, because I can use the both bar code parameters.
+        And the stock is defined in 0, because if the user doesn't pass the stock, the quantity ir already set to 0
+        :param title: str
+        :param author: str
+        :param price:float
+        :param barcode: str
+        :param stock:str """
         try:
-            if not self.verify_register(bar_code):
+            if not self.verify_register(barcode):
                 self.db.cursor.execute('INSERT INTO books (title, author, price, bar_code, stock) VALUES (%s, %s, %s, '
-                                       '%s, %s)', (title, author, round(price, 2), bar_code, stock))
+                                       '%s, %s)', (title, author, round(price, 2), barcode, stock))
                 self.db.con.commit()
                 self.db.con.close()
                 print('Registered Successfully!')
@@ -21,9 +29,12 @@ class Books:
         except Exception as error:
             print(error)
 
-    def update_price_books(self, id_books, new_price):
+    def update_price_books(self, barcode, new_price):
+        """This method update the price of the books, by the barcode.
+        :param barcode:str
+        :param new_price: float"""
         try:
-            self.db.cursor.execute('UPDATE books SET price = %s where id_books = %s', (round(new_price, 2), id_books))
+            self.db.cursor.execute('UPDATE books SET price = %s where id_books = %s', (round(new_price, 2), barcode))
         except Exception as error:
             print(error)
         else:
@@ -31,9 +42,11 @@ class Books:
             self.db.con.close()
             print('Updated Successfully!')
 
-    def delete_book(self, id_books):
+    def delete_book(self, barcode):
+        """This method deleted books already registered in the database, by the barcode.
+        :param barcode: str"""
         try:
-            self.db.cursor.execute('DELETE FROM books where id_books = %s', (id_books,))
+            self.db.cursor.execute('DELETE FROM books where id_books = %s', (barcode,))
         except Exception as error:
             print(error)
         else:
@@ -53,6 +66,7 @@ class Books:
     #         print(books)
 
     def consult_books(self, bar_code: str):
+        """This method return the specifications of the books, consulting the database by barcode"""
         try:
             book_data = []
             self.db.cursor.execute('SELECT * from books WHERE bar_code = %s', (bar_code,))
@@ -68,10 +82,12 @@ class Books:
                   f"BAR CODE: {book_data[0][4]}\n"
                   f"STOCK: {book_data[0][5]}")
 
-    def verify_register(self, bar_code: str):
+    def verify_register(self, barcode: str):
+        """This method checks if the books is already registered in the database, by barcode.
+        :param barcode: str"""
         try:
             test = []
-            self.db.cursor.execute('SELECT * FROM books where bar_code = %s', (bar_code,))
+            self.db.cursor.execute('SELECT * FROM books where bar_code = %s', (barcode,))
             for i in self.db.cursor.fetchall():
                 test.append(i)
         except Exception as error:

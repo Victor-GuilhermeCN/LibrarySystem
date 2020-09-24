@@ -4,10 +4,12 @@ import pymysql
 class Databank:
 
     def __init__(self):
+        """This function starts the Databank class"""
         self.con = pymysql.connect(user='root', passwd='')
         self.cursor = self.con.cursor()
 
     def database(self):
+        """This method creates the database, and selects it."""
         try:
             self.cursor.execute('CREATE DATABASE library')
         except Exception as error:
@@ -17,6 +19,7 @@ class Databank:
             print('Database created successfully!')
 
     def table_books(self):
+        """This method creates the books table in the library database."""
         try:
             self.cursor.execute('CREATE TABLE IF NOT EXISTS books (id_books int(10) PRIMARY KEY AUTO_INCREMENT, title '
                                 'varchar(255) not null, author varchar(255) not null, price decimal(10,2), bar_code '
@@ -27,6 +30,7 @@ class Databank:
             print('Table Created successfully!')
             
     def table_client(self):
+        """This method creates the client table in the library database."""
         try:
             self.cursor.execute('USE library')
             self.cursor.execute('CREATE TABLE IF NOT EXISTS client (cpf varchar(11) PRIMARY KEY, name varchar(255) '
@@ -37,6 +41,7 @@ class Databank:
             print('Created Successfully')
 
     def verify_connection(self):
+        """This method checks if the connection with the database is stable."""
         try:
             self.cursor.execute('USE library')
         except Exception as error:
