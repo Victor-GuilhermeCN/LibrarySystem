@@ -54,16 +54,6 @@ class Books:
             self.db.con.close()
             print('Deleted Successfully!')
 
-    # def select_book(self, obj):
-    #     try:
-    #         books = []
-    #         self.db.cursor.execute('SELECT * FROM books')
-    #         for i in self.db.cursor.fetchall():
-    #             books.append(i)
-    #     except Exception as eror:
-    #         print(eror)
-    #     else:
-    #         print(books)
 
     def consult_books(self, bar_code: str):
         """This method return the specifications of the books, consulting the database by barcode"""
@@ -87,7 +77,7 @@ class Books:
         :param barcode: str"""
         try:
             test = []
-            self.db.cursor.execute('SELECT * FROM books where bar_code = %s', (barcode,))
+            self.db.cursor.execute(f'SELECT * FROM books where bar_code = {barcode}')
             for i in self.db.cursor.fetchall():
                 test.append(i)
         except Exception as error:
@@ -97,6 +87,17 @@ class Books:
                 return True
             else:
                 return False
+
+    def consult(self, attribute):
+        data = []
+        try:
+            self.db.cursor.execute(f'SELECT {attribute} from books')
+            for i in self.db.cursor.fetchall():
+               data.append(i)
+        except Exception as eror:
+            print(eror)
+        else:
+            print(data)
 
 
 if __name__ == '__main__':
@@ -110,4 +111,5 @@ if __name__ == '__main__':
     # b.register_book("Harry Potter and the chamber of secrets.", 'J.K. Rowling', 89.90, 9998887776662)
     # b.register_book("Harry Potter and prisoner of Azkaban.", 'J.K. Rowling', 69.90, 9998887776663)
     # b.register_book("Harry Potter and the Goblet of Fire.", 'J.K. Rowling', 49.90, 9998887776644)
-    b.register_book("Harry Potter and the Order of the Phoenix.", 'J.K. Rowling', 59.90, 9998887744662)
+    # b.register_book("Harry Potter and the Order of the Phoenix.", 'J.K. Rowling', 59.90, 9998887744662)
+    b.consult('title')
