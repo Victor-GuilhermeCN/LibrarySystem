@@ -64,7 +64,32 @@ class Client:
         except Exception as error:
             print(error)
 
+    def client_update(self, cpf: str, name: str):
+        """This method update the client name in the database, using cpf as condition.
+        :param cpf:str
+        :param name:str"""
+        try:
+            self.db.cursor.execute(f'UPDATE client SET name = %s where cpf = {cpf}', (name,))
+            self.db.con.commit()
+            self.db.con.close()
+            print('Updated Successfully!')
+        except Exception as error:
+            print(error)
+
+    def delete_client(self, cpf: str):
+        """This method delete the client account in the database, using cpf as parameter.
+        :param cpf:str"""
+        try:
+            self.db.cursor.execute(f'DELETE from client where cpf = {cpf}')
+            self.db.con.commit()
+            self.db.con.close()
+            print('Deleted Successfully!')
+        except Exception as error:
+            print(error)
+
 
 if __name__ == '__main__':
     c = Client('11373410732', 'Victor', 'Guilherme da Silva', '25071996', 'abc123')
-    c.client_register()
+    # c.client_register()
+    # c.client_update('11373410732', 'Vktron2')
+    c.delete_client(11373410732)

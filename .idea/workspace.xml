@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="05ff2517-48c8-4564-8749-d78d13488d4e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/books.py" beforeDir="false" afterPath="$PROJECT_DIR$/books.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +51,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../TaxCalculator" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.client">
     <configuration name="books" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Library" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -159,10 +159,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.client" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.db" />
         <item itemvalue="Python.books" />
-        <item itemvalue="Python.client" />
         <item itemvalue="Python.gui" />
       </list>
     </recent_temporary>
@@ -197,22 +197,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1600981555154" />
-    <state width="1345" height="171" key="GridCell.Tab.0.bottom" timestamp="1600984065221">
+    <state width="1345" height="168" key="GridCell.Tab.0.bottom" timestamp="1601085684161">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="171" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1600984065221" />
-    <state width="1345" height="171" key="GridCell.Tab.0.center" timestamp="1600984065221">
+    <state width="1345" height="168" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1601085684161" />
+    <state width="1345" height="168" key="GridCell.Tab.0.center" timestamp="1601085684161">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="171" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1600984065221" />
-    <state width="1345" height="171" key="GridCell.Tab.0.left" timestamp="1600984065221">
+    <state width="1345" height="168" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1601085684161" />
+    <state width="1345" height="168" key="GridCell.Tab.0.left" timestamp="1601085684161">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="171" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1600984065221" />
-    <state width="1345" height="171" key="GridCell.Tab.0.right" timestamp="1600984065221">
+    <state width="1345" height="168" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1601085684161" />
+    <state width="1345" height="168" key="GridCell.Tab.0.right" timestamp="1601085684161">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="171" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1600984065221" />
+    <state width="1345" height="168" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1601085684161" />
     <state x="184" y="9" key="SettingsEditor" timestamp="1600650109665">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
