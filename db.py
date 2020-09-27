@@ -18,9 +18,17 @@ class Databank:
             self.cursor.execute('USE library')
             print('Database created successfully!')
 
+    def connection(self):
+        """This method connect with the database, after the database has been created!"""
+        try:
+            self.cursor.execute('USE library')
+        except Exception as error:
+            print('Unsuccessful connection')
+
     def table_books(self):
         """This method creates the books table in the library database."""
         try:
+            self.connection()
             self.cursor.execute('CREATE TABLE IF NOT EXISTS books (id_books int(10) PRIMARY KEY AUTO_INCREMENT, title '
                                 'varchar(255) not null, author varchar(255) not null, price decimal(10,2), bar_code '
                                 'varchar(13), stock int(10))')
@@ -32,23 +40,13 @@ class Databank:
     def table_client(self):
         """This method creates the client table in the library database."""
         try:
-            self.cursor.execute('USE library')
+            self.connection()
             self.cursor.execute('CREATE TABLE IF NOT EXISTS client (cpf varchar(11) PRIMARY KEY, name varchar(255) '
                                 'not null, last_name varchar(255) not null, birth_date date, password varchar(16))')
         except Warning as error:
             print(error)
         else:
             print('Created Successfully')
-
-    def verify_connection(self):
-        """This method checks if the connection with the database is stable."""
-        try:
-            self.cursor.execute('USE library')
-        except Exception as error:
-            print('Error connection!')
-            print(error)
-        else:
-            print('Connection successfully!')
 
     def create_db(self):
         self.database()
@@ -61,5 +59,5 @@ if __name__ == '__main__':
     # db.create_db()
     # db.create_table()
     # db.verify_connection()
-    db.create_db()
+    db.connection()
     # db.table_client()

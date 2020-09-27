@@ -6,7 +6,8 @@ class Books:
     def __init__(self):
         """Start the instance of the class"""
         self.db = Databank()
-        self.db.cursor.execute('USE library')
+        self.db.connection()
+        # self.db.cursor.execute('USE library')
 
     def register_book(self, title: str, author: str, price: float, barcode: str, stock=0):
         """This method register the book in the books table, but before checks if the books is already registered.
@@ -53,7 +54,6 @@ class Books:
             self.db.con.commit()
             self.db.con.close()
             print('Deleted Successfully!')
-
 
     def consult_books(self, bar_code: str):
         """This method return the specifications of the books, consulting the database by barcode"""
@@ -112,4 +112,4 @@ if __name__ == '__main__':
     # b.register_book("Harry Potter and prisoner of Azkaban.", 'J.K. Rowling', 69.90, 9998887776663)
     # b.register_book("Harry Potter and the Goblet of Fire.", 'J.K. Rowling', 49.90, 9998887776644)
     # b.register_book("Harry Potter and the Order of the Phoenix.", 'J.K. Rowling', 59.90, 9998887744662)
-    b.consult('title')
+    b.consult_books(1234569871235)

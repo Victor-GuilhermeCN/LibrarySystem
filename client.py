@@ -11,7 +11,7 @@ class Client:
         :param birth_date: str
         :param password: str"""
         self.db = Databank()
-        self.db.cursor.execute('USE library')
+        self.db.connection()
         self.cpf = cpf
         self.name = name
         self.last_name = last_name
@@ -104,8 +104,8 @@ class Client:
 
 
 if __name__ == '__main__':
-    c = Client('11373410732', 'Victor', 'Guilherme da Silva', '25071996', 'abc123')
-    # c.client_register()
+    c = Client('11373410789', 'Victor', 'Guilherme da Silva', '25071996', 'abc123')
+    c.client_register()
     # c.client_update('11373410732', 'Vktron2')
     # c.delete_client(11373410732)
-    c.get_age()
+    # c.get_age()
