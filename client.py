@@ -18,7 +18,7 @@ class Client:
         self.birth_date = birth_date
         self.password = password
 
-    def get_age(self):
+    def format_age(self):
         """ This method transforms the dates to the MYSQL default YYYYMMDD
         :param: birth_date:str"""
         birth_date = self.birth_date.splitlines()
@@ -30,6 +30,21 @@ class Client:
         year = [''.join(yearday)]
         conclusion = f'{year[0]}{month[0]}{day[0]}'
         return conclusion
+
+    def get_age(self):
+        """This method return the age of all client registered in the databank, without filter or condition. It's still
+        in the improvement phase."""
+        try:
+            age = []
+            self.db.cursor.execute(f'SELECT YEAR(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(client.birth_date))) AS age FROM '
+                                   f'client')
+            for i in self.db.cursor.fetchall():
+                age.append(i)
+        except Exception as error:
+            print(error)
+        else:
+            for list in age:
+                print(*list)
 
     def verify(self, cpf: str):
         """This method checks if the user is already registered in the system
@@ -53,7 +68,7 @@ class Client:
         try:
             if not self.verify(self.cpf):
                 self.db.cursor.execute('INSERT INTO client (cpf, name, last_name, birth_date, password) values (%s, %s,'
-                                       ' %s, %s, %s)', (self.cpf, self.name, self.last_name, self.get_age(),
+                                       ' %s, %s, %s)', (self.cpf, self.name, self.last_name, self.format_age(),
                                                         self.password))
 
                 self.db.con.commit()
@@ -92,4 +107,5 @@ if __name__ == '__main__':
     c = Client('11373410732', 'Victor', 'Guilherme da Silva', '25071996', 'abc123')
     # c.client_register()
     # c.client_update('11373410732', 'Vktron2')
-    c.delete_client(11373410732)
+    # c.delete_client(11373410732)
+    c.get_age()
