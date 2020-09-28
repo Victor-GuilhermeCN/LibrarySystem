@@ -12,7 +12,7 @@ class Books:
     def register_book(self, title: str, author: str, price: float, barcode: str, stock=0):
         """This method register the book in the books table, but before checks if the books is already registered.
         I decided to use the barcode in data string, because I can use the both bar code parameters.
-        And the stock is defined in 0, because if the user doesn't pass the stock, the quantity ir already set to 0
+        And the stock is defined in 0, because if the user doesn't pass the stock, the quantity is already set to 0
         :param title: str
         :param author: str
         :param price:float
