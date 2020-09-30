@@ -44,7 +44,7 @@ class Client:
         except Exception as error:
             print(error)
         else:
-            # Transforming the date in YYYYMMDD to DDMMYY
+            # Transforming the date in YYYYMMDD to DDMMYYYY
             birthday = f'{date_selected[0]}'.replace('-', '').splitlines()
             year = birthday[0][0], birthday[0][1], birthday[0][2], birthday[0][3]
             month = birthday[0][4], birthday[0][5]
@@ -133,7 +133,7 @@ class Client:
 if __name__ == '__main__':
     c = Client('11373410789', 'Victor', 'Guilherme da Silva', '25071996', 'abc123')
     # c.client_register()
-    # c.client_update('11373410732', 'Vktron2')
+    # c.client_update('11373410732', 'Victor')
     # c.delete_client(11373410732)
     # c.get_age()
     print(c.print_age(11373410789))
