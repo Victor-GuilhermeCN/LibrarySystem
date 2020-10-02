@@ -50,6 +50,7 @@ class Databank:
 
     def create_db(self):
         self.database()
+        self.connection()
         self.table_books()
         self.table_client()
 
